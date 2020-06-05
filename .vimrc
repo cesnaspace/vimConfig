@@ -1,4 +1,15 @@
-execute pathogen#infect()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'tpope/vim-sensible'
+    Plug 'bfrg/vim-cpp-modern'
+" Initialize plugin system
+call plug#end()
 
 let mapleader = ","
 set number

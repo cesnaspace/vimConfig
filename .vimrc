@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'tpope/vim-sensible'
     Plug 'bfrg/vim-cpp-modern'
+    Plug 'vim-airline/vim-airline'
 " Initialize plugin system
 call plug#end()
 

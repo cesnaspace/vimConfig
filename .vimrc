@@ -21,14 +21,14 @@ set list
 
 set statusline+=%F
 
-nnoremap <Leader>g :grep! -sI -in --exclude-dir={.git} '<cword>' -R .
-vnoremap <Leader>g "vy<Cr>:exec "grep! " getreg("v")"--exclude-dir={.git} -RIisn ."
-"nnoremap <leader> g :execute "grep! -R" . shellescape(expand("<cWORD>")) . " ."<Cr>:copen<Cr>
+nnoremap <Leader>g :grep! -sI -in --exclude-dir='.git' '<cword>' -R .
+vnoremap <Leader>g "vy<Cr>:exec "grep! " getreg("v")"--exclude-dir='.git' -RIisn ."
 nnoremap <silent> ) :cnext<Cr>
 nnoremap <silent> ( :cprevious<Cr>
 nnoremap <silent> > :bnext<Cr>
 nnoremap <silent> < :bprev<Cr>
-nnoremap <silent> <Leader>w :bdel<Cr>
+command! BW :bn|:bd#
+nnoremap <silent> <Leader>w :BW<Cr>
 
 command -nargs=* MMake :make! <q-args><bar>copen
 set mouse=n

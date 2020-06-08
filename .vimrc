@@ -5,35 +5,34 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf'
     Plug 'tpope/vim-sensible'
     Plug 'bfrg/vim-cpp-modern'
     Plug 'vim-airline/vim-airline'
 " Initialize plugin system
 call plug#end()
 
-let mapleader = ","
 set number
 set nohlsearch
-
-set listchars=tab:→\ ,nbsp:␣,trail:•,precedes:«,extends:»
 set list
-
+set mouse=n
+set mouse+=v
+set incsearch
 set statusline+=%F
+set visualbell
 
+command -nargs=* MMake :make! <q-args><bar>copen
+command! BW :bn|:bd#
+
+let mapleader = ","
 nnoremap <Leader>g :grep! -sI -in --exclude-dir='.git' '<cword>' -R .
 vnoremap <Leader>g "vy<Cr>:exec "grep! " getreg("v")"--exclude-dir='.git' -RIisn ."
 nnoremap <silent> ) :cnext<Cr>
 nnoremap <silent> ( :cprevious<Cr>
 nnoremap <silent> > :bnext<Cr>
 nnoremap <silent> < :bprev<Cr>
-command! BW :bn|:bd#
 nnoremap <silent> <Leader>w :BW<Cr>
 
-command -nargs=* MMake :make! <q-args><bar>copen
-set mouse=n
-set mouse+=v
-set incsearch
 
 
 " Find file in current directory and edit it.

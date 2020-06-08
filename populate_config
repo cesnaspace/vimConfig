@@ -1,2 +1,6 @@
 cp .vimrc ~/.vimrc
-cat .bashrc >> ~/.bashrc
+
+if [ -z "${FZF_DEFAULT_COMMAND}" ]; then
+    echo "Appending fzf config to bashrc"
+    cat .bashrc >> ~/.bashrc
+fi

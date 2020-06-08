@@ -13,13 +13,31 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 set number
-set nohlsearch
 set list
 set mouse=n
 set mouse+=v
-set incsearch
-set statusline+=%F
 set visualbell
+
+
+" Temp Files
+set nobackup                    " No backup file
+set noswapfile                  " No swap file
+
+" Search
+set incsearch                   " Incremental search
+set nohlsearch                  " No Highlight matches
+set ignorecase                  " Case-insensitive search...
+set smartcase                   " ...unless search contains uppercase letter
+
+" Indentation
+set smarttab                    " Better tabs
+set smartindent                 " Insert new level of indentation
+set autoindent                  " Copy indentation from previous line
+set tabstop=4                   " Columns a tab counts for
+set softtabstop=4               " Columns a tab inserts in insert mode
+set shiftwidth=4                " Columns inserted with the reindent operations
+set shiftround                  " Always indent by multiple of shiftwidth
+set expandtab                   " Always use spaces instead of tabs
 
 command -nargs=* MMake :make! <q-args><bar>copen
 command! BW :bn|:bd#

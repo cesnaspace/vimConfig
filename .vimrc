@@ -6,18 +6,53 @@ endif
 
 call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf'
-    Plug 'tpope/vim-sensible'
+"    Plug 'tpope/vim-sensible'
     Plug 'bfrg/vim-cpp-modern'
     Plug 'vim-airline/vim-airline'
 " Initialize plugin system
 call plug#end()
 
-set number
-set list
 set mouse=n
 set mouse+=v
-set visualbell
 
+" ---------------------------------------------------------------------------- "
+" General Settings                                                             "
+" ---------------------------------------------------------------------------- "
+
+filetype plugin indent on
+
+try
+    colorscheme solarized
+catch
+endtry
+
+if !exists("g:syntax_on")
+    syntax enable
+endif
+
+set autoread                    " Auto reload file after external command
+set background=dark             " Use a dark background
+set backspace=indent,eol,start  " Delete over line breaks
+set binary                      " Enable binary support
+"set colorcolumn=80,120          " Show ruler columns
+set encoding=utf-8              " Use UTF-8 encoding
+set hidden                      " Hide buffers instead of closing them
+set laststatus=2                " Always display the status line
+set nofoldenable                " Disable folding
+set lazyredraw                  " Use lazy redrawing
+set noshowmode                  " Don't show mode
+set number                      " Show line numbers
+set pastetoggle=<F2>            " Toggle paste mode with F2
+set ruler                       " Show ruler
+set showcmd                     " Show current command
+set showmatch                   " Show matching bracket/parenthesis/etc
+set showmode                    " Show current mode
+set tags=tags;                  " Find tags recursively
+set title                       " Change terminal title
+set ttyfast                     " Fast terminal
+set wildmenu                    " Visual autocomplete for command menu
+set clipboard^=unnamed,unnamedplus
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 
 " Temp Files
 set nobackup                    " No backup file
@@ -38,6 +73,119 @@ set softtabstop=4               " Columns a tab inserts in insert mode
 set shiftwidth=4                " Columns inserted with the reindent operations
 set shiftround                  " Always indent by multiple of shiftwidth
 set expandtab                   " Always use spaces instead of tabs
+
+" Key sequence timeout
+set ttimeout                    " Enable time out
+set ttimeoutlen=0               " Disable key code delay
+
+" Wrapping
+set nowrap                      " Don't wrap long lines
+set linebreak                   " When wrapping, only at certain characters
+set textwidth=0                 " Turn off physical line wrapping
+set wrapmargin=0                " Turn off physical line wrapping
+
+" Joining
+set nojoinspaces                " Only one space when joining lines
+set formatoptions+=j            " Remove comment leader when joining lines
+
+" Scroll
+set sidescrolloff=3             " Keep at least 3 lines left/right
+set scrolloff=3                 " Keep at least 3 lines above/below
+
+" Disable bell
+set visualbell                  " Disable visual bell
+set noerrorbells                " Disable error bell
+
+" Treat given characters as a word boundary
+set iskeyword-=.                " Make '.' end of word designator
+set iskeyword-=#                " Make '#' end of word designator
+
+" Splits
+set splitbelow                  " Horizontal split below
+set splitright                  " Vertical split right
+
+" Spell checking
+"set spelllang=en_us             " English as default language
+"set spell                       " Enable by default
+
+" Invisible characters
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+
+" Make completion menu behave like an IDE
+set completeopt=longest,menuone,preview
+
+" Disable modelines as a security precaution
+set modelines=0
+set nomodeline
+
+" Encryption
+if has("crypt-blowfish2")
+    set cm=blowfish2
+endif
+
+" History
+set history=1000                " Remember more commands
+if has('persistent_undo')
+    set undofile                " Persistent undo
+    set undodir=~/.vim/undo     " Location to store undo history
+    set undolevels=1000         " Max number of changes
+    set undoreload=10000        " Max lines to save for undo on a buffer reload
+endif
+
+" Neovim
+if has('nvim')
+  set wildoptions+=pum,tagfile
+endif
+
+" ---------------------------------------------------------------------------- "
+" Colors & User Interface                                                      "
+" ---------------------------------------------------------------------------- "
+
+if has("gui_running")
+    set guifont=Source\ Code\ Pro\ Medium:h13
+    set antialias
+end
+
+" Same color for sign column and line numbers
+highlight clear SignColumn
+
+" Custom spell-checking highlighting
+highlight SpellBad     term=underline cterm=underline
+highlight SpellCap     term=underline cterm=underline
+highlight SpellRare    term=underline cterm=underline
+highlight SpellLocal   term=underline cterm=underline
+
+" Tab line
+highlight TabLine      ctermfg=White  ctermbg=Black     cterm=NONE
+highlight TabLineFill  ctermfg=White  ctermbg=Black     cterm=NONE
+highlight TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
+
+" ---------------------------------------------------------------------------- "
+" Key Mappings                                                                 "
+" ---------------------------------------------------------------------------- "
+
+" Typos
+cnoreabbrev E e
+cnoreabbrev Q q
+cnoreabbrev Qa qa
+cnoreabbrev W w
+
+" Save file which you forgot to open with sudo
+cnoremap w!! w !sudo tee % >/dev/null
+
+" Wrap the current visual selection
+vnoremap Q gq
+
+" Wrap the current paragraph
+nnoremap Q gqap
+
+" Search for current visual selection
+vnoremap // y/\V<C-R>"<CR>
+
+" Redraw the screen and remove highlighting
+nnoremap <silent> <C-l> :set hlsearch!<CR>
+
 
 command -nargs=* MMake :make! <q-args><bar>copen
 command! BW :bn|:bd#

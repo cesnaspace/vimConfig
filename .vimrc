@@ -6,14 +6,15 @@ endif
 
 call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf'
-"    Plug 'tpope/vim-sensible'
     Plug 'bfrg/vim-cpp-modern'
-    Plug 'vim-airline/vim-airline'
+    Plug 'ap/vim-buftabline'
 " Initialize plugin system
 call plug#end()
 
 set mouse=n
 set mouse+=v
+" Disable all blinking:
+set guicursor+=a:blinkon0
 
 " ---------------------------------------------------------------------------- "
 " General Settings                                                             "
@@ -31,7 +32,7 @@ if !exists("g:syntax_on")
 endif
 
 set autoread                    " Auto reload file after external command
-set background=dark             " Use a dark background
+"set background=dark             " Use a dark background
 set backspace=indent,eol,start  " Delete over line breaks
 set binary                      " Enable binary support
 "set colorcolumn=80,120          " Show ruler columns

@@ -192,7 +192,7 @@ command -nargs=* MMake :make! <q-args><bar>copen
 command! BW :bn|:bd#
 
 let mapleader = ","
-nnoremap <Leader>g :grep! -sI -in --exclude-dir='.git' '<cword>' -R .
+nnoremap <Leader>g :grep! -sIR -in --exclude-dir='.git' '<cword>' .
 vnoremap <Leader>g "vy<Cr>:exec "grep! " getreg("v")"--exclude-dir='.git' -RIisn ."
 nnoremap <silent> ) :cnext<Cr>
 nnoremap <silent> ( :cprevious<Cr>
@@ -204,9 +204,9 @@ nnoremap <silent> <Leader>w :BW<Cr>
 
 " Find file in current directory and edit it.
 function! Find(name)
-   let l:list=system("find . -name '".a:name."' | perl -ne 'print \"$.\\t$_\"'")
+   let l:list=system("find . -iname '".a:name."' | perl -ne 'print \"$.\\t$_\"'")
 "   " replace above line with below one for gvim on windows
-"   " let l:list=system("find . -name ".a:name." | perl -ne \"print
+"   " let l:list=system("find . -iname ".a:name." | perl -ne \"print
 "   qq{$.\\t$_}\"")
   let l:num=strlen(substitute(l:list, "[^\n]", "", "g"))
   if l:num < 1

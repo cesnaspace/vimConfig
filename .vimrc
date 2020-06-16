@@ -167,7 +167,7 @@ highlight TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 " ---------------------------------------------------------------------------- "
 
 " Typos
-cnoreabbrev E e
+" cnoreabbrev E e
 cnoreabbrev Q q
 cnoreabbrev Qa qa
 cnoreabbrev W w

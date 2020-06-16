@@ -194,8 +194,11 @@ command! BW :bn|:bd#
 let mapleader = ","
 nnoremap <Leader>g :grep! -sIR -in --exclude-dir='.git' '<cword>' .
 vnoremap <Leader>g "vy<Cr>:exec "grep! " getreg("v")"--exclude-dir='.git' -RIisn ."
-nnoremap <silent> ) :cnext<Cr>
-nnoremap <silent> ( :cprevious<Cr>
+" https://stackoverflow.com/questions/509690/how-can-you-list-the-matches-of-vims-search
+" F5 will find the next occurrence after vimgrep
+map <F5> :cp!<CR>
+" F6 will find the previous occurrence after vimgrep
+map <F6> :cn!<CR>
 nnoremap <silent> > :bnext<Cr>
 nnoremap <silent> < :bprev<Cr>
 nnoremap <silent> <Leader>w :BW<Cr>

@@ -192,8 +192,8 @@ command -nargs=* MMake :make! <q-args><bar>copen
 command! BW :bn|:bd#
 
 let mapleader = ","
-nnoremap <Leader>g :grep! -sIR -in --exclude-dir='.git' '<cword>' .
-vnoremap <Leader>g "vy<Cr>:exec "grep! " getreg("v")"--exclude-dir='.git' -RIisn ."
+nnoremap <Leader>g /<C-r><C-w>\c<Cr>:grep! -sIR -in --exclude-dir='.git' '<cword>' .
+vnoremap <Leader>g "vy<Cr>/\V<C-R>v<CR>:exec "grep! " shellescape(getreg("v")) " --exclude-dir='.git' -RIisn ."
 " https://stackoverflow.com/questions/509690/how-can-you-list-the-matches-of-vims-search
 " F5 will find the next occurrence after vimgrep
 map <F5> :cp!<CR>

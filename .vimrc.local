@@ -169,6 +169,10 @@ vnoremap <Leader>g "vy<Cr>/\V<C-R>v<CR>:exec "grep! " shellescape(getreg("v")) "
 nmap <F5> <Plug>(qf_qf_toggle)
 let g:qf_shorten_path = 0
 
+" colorscheme
+let g:gruvbox_contrast_light = 'medium'
+silent! colorscheme gruvbox
+
 " Find file in current directory and edit it.
 function! Find(name)
    let l:list=system("find . -iname '".a:name."' | perl -ne 'print \"$.\\t$_\"'")
@@ -224,3 +228,12 @@ augroup auto_comment
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
 
+" vim-numbertoggle - Automatic toggling between 'hybrid' and absolute line numbers
+" Maintainer:        <https://jeffkreeftmeijer.com>
+" Version:           2.1.1
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+augroup END

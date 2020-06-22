@@ -1,1 +1,2 @@
 Plug 'romainl/vim-qf'
+Plug 'morhetz/gruvbox'

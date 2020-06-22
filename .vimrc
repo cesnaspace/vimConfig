@@ -65,7 +65,7 @@ Plug 'xolox/vim-session'
 " Plug 'honza/vim-snippets'
 
 "" Color
-Plug 'tomasr/molokai'
+" Plug 'tomasr/molokai'
 
 "*****************************************************************************
 "" Custom bundles
@@ -148,7 +148,7 @@ set ruler
 set number
 
 let no_buffers_menu=1
-silent! colorscheme molokai
+" silent! colorscheme molokai
 
 set mousemodel=popup
 set t_Co=256

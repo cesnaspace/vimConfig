@@ -1,2 +1,5 @@
 Plug 'romainl/vim-qf'
 Plug 'morhetz/gruvbox'
+Plug 'ap/vim-buftabline'
+" Plug 'zefei/vim-wintabs'
+" Plug 'zefei/vim-wintabs-powerline'

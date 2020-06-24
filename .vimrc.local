@@ -178,6 +178,8 @@ nnoremap <C-x> x
 vnoremap <C-x> x
 nnoremap x "xx
 vnoremap x "xx
+nnoremap X "xX
+vnoremap X "xX
 
 " colorscheme
 let g:gruvbox_contrast_light = 'medium'

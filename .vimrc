@@ -409,11 +409,9 @@ endif
 " noremap <leader>q :bp<CR>
 " noremap <leader>x :bn<CR>
 " noremap <leader>w :bn<CR>
-noremap > :bn<CR>
-noremap < :bp<CR>
 
-"" Close buffer
-noremap <leader>c :bd<CR>
+" "" Close buffer
+" noremap <leader>c :bd<CR>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :set hlsearch!<CR>

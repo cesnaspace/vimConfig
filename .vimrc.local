@@ -87,6 +87,7 @@ set splitright                  " Vertical split right
 
 " Invisible characters
 set list
+" set listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
 " Make completion menu behave like an IDE
@@ -125,6 +126,10 @@ if has('nvim-0.4.0') || has("patch-8.2.0191")
 else
     let g:fzf_layout = { "window": "silent botright 16split" }
 endif
+
+
+"" NERDTree configuration
+let g:NERDTreeShowHidden=1
 
 " ---------------------------------------------------------------------------- "
 " Key Mappings                                                                 "

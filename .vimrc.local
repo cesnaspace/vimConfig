@@ -78,7 +78,7 @@ set iskeyword-=.                " Make '.' end of word designator
 set iskeyword-=#                " Make '#' end of word designator
 
 " Splits
-set splitbelow                  " Horizontal split below
+" set splitbelow                  " Horizontal split below
 set splitright                  " Vertical split right
 
 " Spell checking
@@ -128,8 +128,12 @@ else
 endif
 
 
-"" NERDTree configuration
+" NERDTree configuration
 let g:NERDTreeShowHidden=1
+
+" vim-qf configuration
+let g:qf_mapping_ack_style = 1
+
 
 " ---------------------------------------------------------------------------- "
 " Key Mappings                                                                 "
@@ -218,21 +222,6 @@ function! Find(name)
   execute ":e ".l:line
 endfunction
 command! -nargs=1 Find :call Find("<args>")
-
-" " autosave delay, cursorhold trigger, default: 4000ms
-" setl updatetime=300
-" " highlight the word under cursor (CursorMoved is inperformant)
-" highlight WordUnderCursor cterm=underline gui=underline
-" autocmd CursorHold * call HighlightCursorWord()
-" function! HighlightCursorWord()
-"     " if hlsearch is active, don't overwrite it!
-"     let search = getreg('/')
-"     let cword = expand('<cword>')
-"     if match(cword, search) == -1
-"         exe printf('match WordUnderCursor /\V\<%s\>/', escape(cword, '/\'))
-"     endif
-" endfunction
-
 
 " https://unix.stackexchange.com/questions/199203/why-does-vim-indent-pasted-code-incorrectly
 augroup auto_comment

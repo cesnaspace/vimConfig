@@ -30,6 +30,7 @@ set ttyfast                     " Fast terminal
 set wildmenu                    " Visual autocomplete for command menu
 set clipboard^=unnamed,unnamedplus
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+set sidescroll=1                " sensible horizontal scroll
 
 " Temp Files
 set nobackup                    " No backup file
@@ -57,7 +58,7 @@ set ttimeoutlen=0               " Disable key code delay
 
 " Wrapping
 set nowrap                      " Don't wrap long lines
-set linebreak                   " When wrapping, only at certain characters
+set linebreak                   " Dont split words, doesn't work with set list
 set textwidth=0                 " Turn off physical line wrapping
 set wrapmargin=0                " Turn off physical line wrapping
 
@@ -88,7 +89,8 @@ set splitright                  " Vertical split right
 " Invisible characters
 set list
 " set listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set showbreak=↪
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:•
 
 " Make completion menu behave like an IDE
 set completeopt=longest,menuone,preview
@@ -175,6 +177,7 @@ nnoremap <silent> > :bnext<Cr>
 nnoremap <silent> < :bprev<Cr>
 nnoremap <silent> <Leader>c :BW<Cr>
 
+map <F12> :set wrap!<Cr>
 nmap <F5> <Plug>(qf_qf_toggle)
 let g:qf_shorten_path = 0
 

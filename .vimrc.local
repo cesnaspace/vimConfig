@@ -31,6 +31,7 @@ set wildmenu                    " Visual autocomplete for command menu
 set clipboard^=unnamed,unnamedplus
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set sidescroll=1                " sensible horizontal scroll
+set nostartofline               " scrolling don't change cursor position
 
 " Temp Files
 set nobackup                    " No backup file
@@ -135,11 +136,21 @@ let g:NERDTreeShowHidden=1
 
 " vim-qf configuration
 let g:qf_mapping_ack_style = 1
-
+let g:qf_auto_quit = 0
+let g:qf_shorten_path = 0
 
 " ---------------------------------------------------------------------------- "
 " Key Mappings                                                                 "
 " ---------------------------------------------------------------------------- "
+" Scrolling
+nnoremap <S-Up> 3<C-y>
+vnoremap <S-Up> 3<C-y>
+nnoremap <S-Down> 3<C-e>
+vnoremap <S-Down> 3<C-e>
+nnoremap <S-Right> 5z<Right>
+vnoremap <S-Right> 5z<Right>
+nnoremap <S-Left> 5z<Left>
+vnoremap <S-Left> 5z<Left>
 
 " Typos
 " cnoreabbrev E e
@@ -179,7 +190,6 @@ nnoremap <silent> <Leader>c :BW<Cr>
 
 map <F12> :set wrap!<Cr>
 nmap <F5> <Plug>(qf_qf_toggle)
-let g:qf_shorten_path = 0
 
 nnoremap <C-x> x
 vnoremap <C-x> x

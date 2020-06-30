@@ -1,3 +1,9 @@
+if exists('$SHELL')
+    set shell=$SHELL
+else
+    set shell=/bin/sh
+endif
+
 set mouse=n
 set mouse+=v
 " Disable all blinking:
@@ -6,13 +12,50 @@ set guicursor+=a:blinkon0
 " ---------------------------------------------------------------------------- "
 " General Settings                                                             "
 " ---------------------------------------------------------------------------- "
+syntax on
+
+let no_buffers_menu=1
+
+set mousemodel=popup
+set t_Co=256
+set guioptions=egmrti
+set gfn=Monospace\ 10
+
+if has("gui_running")
+  if has("gui_mac") || has("gui_macvim")
+    set guifont=Menlo:h12
+    set transparency=7
+  endif
+else
+  let g:CSApprox_loaded = 1
+
+  " IndentLine
+  let g:indentLine_enabled = 1
+  let g:indentLine_concealcursor = 0
+  let g:indentLine_char = '┆'
+  let g:indentLine_faster = 1
+
+  
+  if $COLORTERM == 'gnome-terminal'
+    set term=gnome-256color
+  else
+    if $TERM == 'xterm'
+      set term=xterm-256color
+    endif
+  endif
+  
+endif
+
 
 set autoread                    " Auto reload file after external command
 "set background=dark             " Use a dark background
 set backspace=indent,eol,start  " Delete over line breaks
 set binary                      " Enable binary support
 "set colorcolumn=80,120          " Show ruler columns
+set fileformats=unix,dos,mac
 set encoding=utf-8              " Use UTF-8 encoding
+set fileencoding=utf-8
+set fileencodings=utf-8
 set hidden                      " Hide buffers instead of closing them
 set laststatus=2                " Always display the status line
 set nofoldenable                " Disable folding
@@ -39,7 +82,7 @@ set noswapfile                  " No swap file
 
 " Search
 set incsearch                   " Incremental search
-set nohlsearch                  " No Highlight matches
+set hlsearch                  " No Highlight matches
 set ignorecase                  " Case-insensitive search...
 set smartcase                   " ...unless search contains uppercase letter
 
@@ -120,6 +163,55 @@ if has('nvim')
 endif
 
 " fzf configuration
+"" fzf.vim
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
+
+" The Silver Searcher
+if executable('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+" ripgrep
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  set grepprg=rg\ --vimgrep
+  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+endif
+
+" Visual Settings
+if has("gui_running")
+  if has("gui_mac") || has("gui_macvim")
+    set guifont=Menlo:h12
+    set transparency=7
+  endif
+else
+  let g:CSApprox_loaded = 1
+
+  " IndentLine
+  let g:indentLine_enabled = 1
+  let g:indentLine_concealcursor = 0
+  let g:indentLine_char = '┆'
+  let g:indentLine_faster = 1
+
+  
+  if $COLORTERM == 'gnome-terminal'
+    set term=gnome-256color
+  else
+    if $TERM == 'xterm'
+      set term=xterm-256color
+    endif
+  endif
+  
+endif
+cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>e :FZF -m<CR>
+"Recovery commands from history through FZF
+nmap <leader>y :History:<CR>
+
 if has('nvim-0.4.0') || has("patch-8.2.0191")
     let g:fzf_layout = { 'window': {
                 \ 'width': 0.9,
@@ -133,7 +225,25 @@ endif
 
 " NERDTree configuration
 let g:NERDTreeShowHidden=1
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeWinSize = 50
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+nnoremap <silent> <F2> :NERDTreeFind<CR>
+nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
+" grep.vim
+nnoremap <silent> <leader>f :Rgrep<CR>
+let Grep_Default_Options = '-IR'
+let Grep_Skip_Files = '*.log *.db'
+let Grep_Skip_Dirs = '.git node_modules'
+
+" terminal emulation
+nnoremap <silent> <leader>sh :terminal<CR>
 " vim-qf configuration
 let g:qf_mapping_ack_style = 1
 let g:qf_auto_quit = 0
@@ -197,6 +307,60 @@ nnoremap x "xx
 vnoremap x "xx
 nnoremap X "xX
 vnoremap X "xX
+
+"" Clean search (highlight)
+nnoremap <silent> <leader><space> :set hlsearch!<CR>
+
+"" Switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <Tab> <C-w>w
+noremap <S-Tab> <C-w>W
+
+"" Vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
+
+"" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+"" Open current line on GitHub
+nnoremap <Leader>o :.Gbrowse<CR>
+
+"" Split
+noremap <Leader>s :<C-u>split<CR>
+noremap <Leader>v :<C-u>vsplit<CR>
+
+"" Git
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gsh :Gpush<CR>
+noremap <Leader>gll :Gpull<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>gr :Gremove<CR>
+
+" session management
+nnoremap <leader>so :OpenSession<Space>
+nnoremap <leader>ss :SaveSession<Space>
+nnoremap <leader>sd :DeleteSession<CR>
+nnoremap <leader>sc :CloseSession<CR>
+
+"" Tabs
+" nnoremap <Tab> gt
+" nnoremap <S-Tab> gT
+" nnoremap <silent> <S-t> :tabnew<CR>
+nnoremap <leader>x gt
+nnoremap <leader>z gT
+nnoremap <silent> <leader>t :tabnew<CR>
+nnoremap <silent> <leader>w :tabclose<CR>
+
+"" Set working directory
+nnoremap <leader>. :lcd %:p:h<CR>
 
 " colorscheme
 let g:gruvbox_contrast_light = 'medium'

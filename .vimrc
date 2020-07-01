@@ -31,8 +31,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
@@ -114,12 +114,13 @@ let g:session_command_aliases = 1
 "*****************************************************************************
 
 " " vim-airline
-" let g:airline_theme = 'powerlineish'
-" let g:airline#extensions#branch#enabled = 1
+let g:airline_theme = 'powerlineish'
+let g:airline#extensions#branch#enabled = 1
 " " let g:airline#extensions#ale#enabled = 1
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tagbar#enabled = 1
-" let g:airline_skip_empty_sections = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_skip_empty_sections = 1
+let g:airline#extensions#tabline#show_tabs = 0
 
 "*****************************************************************************
 "" Abbreviations

@@ -244,6 +244,7 @@ let Grep_Skip_Dirs = '.git node_modules'
 
 " terminal emulation
 nnoremap <silent> <leader>sh :terminal<CR>
+
 " vim-qf configuration
 let g:qf_mapping_ack_style = 1
 let g:qf_auto_quit = 0

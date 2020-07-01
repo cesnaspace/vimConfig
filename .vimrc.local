@@ -285,7 +285,6 @@ nnoremap <silent> <leader><space>:set hlsearch!<CR>
 
 
 command -nargs=* MMake :make! <q-args><bar>copen
-command! BW :bn|:bd#
 
 nnoremap <Leader>g /<C-r><C-w>\c<Cr>:grep! -sIR -in --exclude-dir='.git' '<cword>' .
 vnoremap <Leader>g "vy<Cr>/\V<C-R>v<CR>:exec "grep! " shellescape(getreg("v")) " --exclude-dir='.git' -RIisn ."
@@ -296,7 +295,7 @@ vnoremap <Leader>g "vy<Cr>/\V<C-R>v<CR>:exec "grep! " shellescape(getreg("v")) "
 " map <F6> :cn!<CR>
 nnoremap <silent> > :bnext<Cr>
 nnoremap <silent> < :bprev<Cr>
-nnoremap <silent> <Leader>c :BW<Cr>
+nnoremap <silent> <Leader>c :Bdelete<Cr>
 
 map <F12> :set wrap!<Cr>
 nmap <F5> <Plug>(qf_qf_toggle)

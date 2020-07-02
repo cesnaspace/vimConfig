@@ -114,7 +114,7 @@ let g:session_command_aliases = 1
 "*****************************************************************************
 
 " " vim-airline
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'gruvbox'
 let g:airline#extensions#branch#enabled = 1
 " " let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1

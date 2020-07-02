@@ -136,6 +136,8 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
+cnoreabbrev Qa qa
+cnoreabbrev qA qa
 
 "*****************************************************************************
 "" Commands

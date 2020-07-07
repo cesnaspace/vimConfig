@@ -77,7 +77,7 @@ set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set sidescroll=1                " sensible horizontal scroll
 set nostartofline               " scrolling don't change cursor position
 set cursorline
-set cursorlineopt=screenline
+" set cursorlineopt=screenline
 " Temp Files
 set nobackup                    " No backup file
 set noswapfile                  " No swap file

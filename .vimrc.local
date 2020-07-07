@@ -13,6 +13,7 @@ set guicursor+=a:blinkon0
 " General Settings                                                             "
 " ---------------------------------------------------------------------------- "
 syntax on
+set showcmd
 
 let no_buffers_menu=1
 
@@ -75,7 +76,8 @@ set clipboard^=unnamed,unnamedplus
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set sidescroll=1                " sensible horizontal scroll
 set nostartofline               " scrolling don't change cursor position
-
+set cursorline
+set cursorlineopt=screenline
 " Temp Files
 set nobackup                    " No backup file
 set noswapfile                  " No swap file
@@ -296,7 +298,7 @@ vnoremap <Leader>g "vy<Cr>/\V<C-R>v<CR>:exec "grep! " shellescape(getreg("v")) "
 " map <F6> :cn!<CR>
 nnoremap <silent> > :bnext<Cr>
 nnoremap <silent> < :bprev<Cr>
-nnoremap <silent> <Leader>c :Bdelete<Cr>
+nnoremap <silent> <Leader>c :Bdelete!<Cr>
 
 map <F12> :set wrap!<Cr>
 nmap <F5> <Plug>(qf_qf_toggle)

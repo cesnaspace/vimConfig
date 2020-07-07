@@ -244,6 +244,11 @@ let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
 let Grep_Skip_Dirs = '.git node_modules'
 
+" conoline
+let g:conoline_auto_enable = 1
+let g:conoline_use_colorscheme_default_insert=1
+let g:conoline_use_colorscheme_default_normal=1
+
 " terminal emulation
 nnoremap <silent> <leader>sh :terminal<CR>
 
@@ -358,7 +363,7 @@ nnoremap <leader>sc :CloseSession<CR>
 " nnoremap <silent> <S-t> :tabnew<CR>
 nnoremap <leader>x gt
 nnoremap <leader>z gT
-nnoremap <silent> <leader>t :tabnew<CR>
+nnoremap <silent> <leader>t :tabnew %<CR>
 nnoremap <silent> <leader>w :tabclose<CR>
 
 "" Set working directory

@@ -233,13 +233,15 @@ let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeMouseMode=3
+let g:NERDTreeShowLineNumbers=1
 let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
 " grep.vim
-nnoremap <silent> <leader>f :Rgrep<CR>
+nnoremap <silent> <C-g> :Rgrep<CR>
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
 let Grep_Skip_Dirs = '.git node_modules'
@@ -294,13 +296,11 @@ nnoremap <silent> <leader><space>:set hlsearch!<CR>
 
 command -nargs=* MMake :make! <q-args><bar>copen
 
-nnoremap <Leader>g /<C-r><C-w>\c<Cr>:grep! -sIR -in --exclude-dir='.git' '<cword>' .
-vnoremap <Leader>g "vy<Cr>/\V<C-R>v<CR>:exec "grep! " shellescape(getreg("v")) " --exclude-dir='.git' -RIisn ."
-" " https://stackoverflow.com/questions/509690/how-can-you-list-the-matches-of-vims-search
-" " F5 will find the next occurrence after vimgrep
-" map <F5> :cp!<CR>
-" " F6 will find the previous occurrence after vimgrep
-" map <F6> :cn!<CR>
+" nnoremap <Leader>g /<C-r><C-w>\c<Cr>:grep! -sIR -in --exclude-dir='.git' '<cword>' .
+" vnoremap <Leader>g "vy<Cr>/\V<C-R>v<CR>:exec "grep! " shellescape(getreg("v")) " --exclude-dir='.git' -RIisn ."
+"nnoremap <Leader>g "vyiw/\V<C-R>v<Cr>:execute 'vimgrep /\V\C'. getreg("v") . '/g' fnameescape(expand('%'))
+nnoremap <C-f> "vyiw/\V<C-R>v<Cr>:execute 'vimgrep /\V\C'. getreg("v") . '/g' fnameescape(expand('%'))
+vnoremap <C-f> "vy/\V<C-R>v<Cr>:execute 'vimgrep /\V\C'. getreg("v") . '/g' fnameescape(expand('%'))
 nnoremap <silent> > :bnext<Cr>
 nnoremap <silent> < :bprev<Cr>
 nnoremap <silent> <Leader>c :Bdelete!<Cr>

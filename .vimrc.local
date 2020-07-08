@@ -183,31 +183,6 @@ if executable('rg')
   command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 endif
 
-" Visual Settings
-if has("gui_running")
-  if has("gui_mac") || has("gui_macvim")
-    set guifont=Menlo:h12
-    set transparency=7
-  endif
-else
-  let g:CSApprox_loaded = 1
-
-  " IndentLine
-  let g:indentLine_enabled = 1
-  let g:indentLine_concealcursor = 0
-  let g:indentLine_char = '┆'
-  let g:indentLine_faster = 1
-
-  
-  if $COLORTERM == 'gnome-terminal'
-    set term=gnome-256color
-  else
-    if $TERM == 'xterm'
-      set term=xterm-256color
-    endif
-  endif
-  
-endif
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
@@ -308,12 +283,15 @@ nnoremap <silent> <Leader>c :Bdelete!<Cr>
 map <F12> :set wrap!<Cr>
 nmap <F5> <Plug>(qf_qf_toggle)
 
+" text operation
 nnoremap <C-x> x
 vnoremap <C-x> x
 nnoremap x "xx
 vnoremap x "xx
 nnoremap X "xX
 vnoremap X "xX
+
+imap <c-d> <esc>ddi
 
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :set hlsearch!<CR>
@@ -358,9 +336,6 @@ nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
 "" Tabs
-" nnoremap <Tab> gt
-" nnoremap <S-Tab> gT
-" nnoremap <silent> <S-t> :tabnew<CR>
 nnoremap <leader>x gt
 nnoremap <leader>z gT
 nnoremap <silent> <leader>t :tabnew %<CR>

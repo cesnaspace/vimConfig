@@ -1,7 +1,0 @@
-Plug 'romainl/vim-qf'
-Plug 'morhetz/gruvbox'
-"Plug 'ap/vim-buftabline'
-Plug 'moll/vim-bbye'
-Plug 'miyakogi/conoline.vim'
-" Plug 'zefei/vim-wintabs'
-" Plug 'zefei/vim-wintabs-powerline'

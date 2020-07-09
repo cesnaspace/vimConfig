@@ -1,4 +1,3 @@
 cp .vimrc ~/.vimrc
 cp .vimrc.local ~/.vimrc.local
-cp .vimrc.local.bundles ~/.vimrc.local.bundles
 [ -z `grep 'gruvbox_256palette' ~/.bashrc` ] && echo '~/.vim/plugged/gruvbox/gruvbox_256palette.sh'>> ~/.bashrc

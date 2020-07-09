@@ -5,9 +5,6 @@
 "*****************************************************************************
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 
-" let g:vim_bootstrap_langs = "c,python"
-" let g:vim_bootstrap_editor = "vim"				" nvim or vim
-
 if !filereadable(vimplug_exists)
   if !executable("curl")
     echoerr "You have to install curl or first install vim-plug yourself!"
@@ -38,9 +35,7 @@ Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
-" Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
-" Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 
@@ -54,6 +49,7 @@ let g:make = 'gmake'
 if exists('make')
         let g:make = 'make'
 endif
+
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
 "" Vim-Session
@@ -61,35 +57,11 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
+Plug 'romainl/vim-qf'
+Plug 'morhetz/gruvbox'
+Plug 'moll/vim-bbye'
+Plug 'miyakogi/conoline.vim'
 
-"" Snippets
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-
-"" Color
-" Plug 'tomasr/molokai'
-
-"*****************************************************************************
-"" Custom bundles
-"*****************************************************************************
-
-" c
-" Plug 'ludwig/split-manpage.vim'
-
-
-"" python
-""" Python Bundle
-"Plug 'davidhalter/jedi-vim'
-"Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-
-
-"*****************************************************************************
-"*****************************************************************************
-
-"" Include user's extra bundle
-if filereadable(expand("~/.vimrc.local.bundles"))
-  source ~/.vimrc.local.bundles
-endif
 
 call plug#end()
 

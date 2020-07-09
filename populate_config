@@ -1,3 +1,4 @@
 cp .vimrc ~/.vimrc
 cp .vimrc.local ~/.vimrc.local
+cp -r .config/nvim ~/.config
 [ -z `grep 'gruvbox_256palette' ~/.bashrc` ] && echo '~/.vim/plugged/gruvbox/gruvbox_256palette.sh'>> ~/.bashrc

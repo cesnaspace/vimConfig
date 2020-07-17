@@ -62,7 +62,6 @@ Plug 'morhetz/gruvbox'
 Plug 'moll/vim-bbye'
 Plug 'miyakogi/conoline.vim'
 
-
 call plug#end()
 
 " Required:

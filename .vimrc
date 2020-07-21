@@ -92,6 +92,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#tabline#show_tabs = 0
+let g:airline#extensions#tabline#close_symbol = 'X'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
 
 "*****************************************************************************
 "" Abbreviations

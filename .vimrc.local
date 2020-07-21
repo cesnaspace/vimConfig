@@ -49,7 +49,7 @@ endif
 
 
 set autoread                    " Auto reload file after external command
-"set background=dark             " Use a dark background
+set background=light            " Use a dark background
 set backspace=indent,eol,start  " Delete over line breaks
 set binary                      " Enable binary support
 "set colorcolumn=80,120          " Show ruler columns
@@ -144,6 +144,8 @@ set completeopt=longest,menuone,preview
 " Disable modelines as a security precaution
 set modelines=0
 set nomodeline
+
+set statusline+=%F
 
 " Encryption
 if has("crypt-blowfish2")

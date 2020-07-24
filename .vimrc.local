@@ -285,7 +285,8 @@ nmap ) <Plug>(qf_qf_next)
 
 
 map <F12> :set wrap!<Cr>
-nmap <F5> <Plug>(qf_qf_toggle)
+map <F5> <Plug>(qf_qf_toggle)
+nmap <Leader><Enter>  :echo expand('%:p')<Cr>
 
 " text operation
 nnoremap <C-x> x

@@ -202,20 +202,22 @@ else
 endif
 
 
-" NERDTree configuration
-let g:NERDTreeShowHidden=1
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeMouseMode=3
-let g:NERDTreeShowLineNumbers=1
-let g:NERDTreeWinSize = 50
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-nnoremap <silent> <F2> :NERDTreeFind<CR>
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
+" Hit enter in the file browser to open the selected
+" file with :vsplit to the right of the browser.
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+let g:netrw_liststyle = 3
+
+
+" Netrw settings
+
+" Change directory to the current buffer when opening files.
+set autochdir
+
+map <silent> <F2> :Lexplore<CR>
+
 
 " grep.vim
 nnoremap <silent> <C-g> :Rgrep<CR>

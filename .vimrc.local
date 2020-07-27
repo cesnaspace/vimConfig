@@ -203,6 +203,7 @@ endif
 
 " nerdtree
 nnoremap <silent> <F2> :NERDTreeFind<CR>
+nnoremap <silent> <F3> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
@@ -210,6 +211,7 @@ let NERDTreeDirArrows = 1
 let g:NERDTreeMouseMode=3
 let g:NERDTreeShowHidden=1
 let g:NERDTreeChDirMode=2
+let g:NERDTreeHijackNetrw=1
 
 map <silent> - :Ex<CR>
 let g:netrw_banner = 0

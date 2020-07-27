@@ -26,8 +26,8 @@ call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/nerdtree'
+Plug 'ap/vim-buftabline'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
@@ -82,16 +82,16 @@ let g:session_command_aliases = 1
 "" Visual Settings
 "*****************************************************************************
 
-" " vim-airline
-let g:airline_theme = 'gruvbox'
-let g:airline#extensions#branch#enabled = 1
-" " let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
-let g:airline#extensions#tabline#show_tabs = 0
-let g:airline#extensions#tabline#close_symbol = 'X'
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+" " " vim-airline
+" let g:airline_theme = 'gruvbox'
+" let g:airline#extensions#branch#enabled = 1
+" " " let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tagbar#enabled = 1
+" let g:airline_skip_empty_sections = 1
+" let g:airline#extensions#tabline#show_tabs = 0
+" let g:airline#extensions#tabline#close_symbol = 'X'
+" let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 
 "*****************************************************************************
@@ -103,6 +103,7 @@ cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
 cnoreabbrev Wq wq
 cnoreabbrev Wa wa
+cnoreabbrev Wqa wqa
 cnoreabbrev wQ wq
 cnoreabbrev WQ wq
 cnoreabbrev W w

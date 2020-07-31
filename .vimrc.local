@@ -167,8 +167,9 @@ if has('nvim')
 endif
 
 " nerdtree
-nnoremap <silent> <F2> :NERDTreeFind<CR>
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
+" nnoremap <silent> <F2> :NERDTreeFind<CR>
+" nnoremap <silent> <F3> :NERDTreeToggle<CR>
+nnoremap <silent> <expr> <F2> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
@@ -184,6 +185,10 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_show_hidden=1
 let g:ctrlp_open_multiple_files = 'r'
 let g:ctrlp_arg_map = 1
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=100
+let g:ctrlp_working_path_mode="rw"
+
 
 map <silent> - :Ex<CR>
 let g:netrw_banner = 0

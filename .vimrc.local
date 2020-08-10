@@ -51,6 +51,7 @@ endif
 set autoread                    " Auto reload file after external command
 set background=light            " Use a dark background
 set backspace=indent,eol,start  " Delete over line breaks
+set whichwrap+=<,>,[,]          " Cursors wraps around line breaks
 set binary                      " Enable binary support
 "set colorcolumn=80,120          " Show ruler columns
 set fileformats=unix,dos,mac

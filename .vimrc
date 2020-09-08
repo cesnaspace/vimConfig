@@ -305,3 +305,6 @@ endif
 "   let g:airline_symbols.readonly = ''
 "   let g:airline_symbols.linenr = ''
 " endif
+
+:map <Down> gj
+:map <Up> gk

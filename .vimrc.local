@@ -49,7 +49,7 @@ endif
 
 
 set autoread                    " Auto reload file after external command
-set background=dark             " Use a dark background
+set background=light            " Use a dark background
 set backspace=indent,eol,start  " Delete over line breaks
 set whichwrap+=<,>,[,]          " Cursors wraps around line breaks
 set binary                      " Enable binary support
@@ -108,6 +108,7 @@ set nowrap                      " Don't wrap long lines
 set linebreak                   " Dont split words, doesn't work with set list
 set textwidth=0                 " Turn off physical line wrapping
 set wrapmargin=0                " Turn off physical line wrapping
+set display+=lastline           " When included, as much as possible of the last line in a window will be displayed
 
 " Joining
 set nojoinspaces                " Only one space when joining lines

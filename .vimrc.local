@@ -28,23 +28,22 @@ if has("gui_running")
     set transparency=7
   endif
 else
-  let g:CSApprox_loaded = 1
-
-  " IndentLine
-  let g:indentLine_enabled = 1
-  let g:indentLine_concealcursor = 0
-  let g:indentLine_char = '┆'
-  let g:indentLine_faster = 1
-
+""  let g:CSApprox_loaded = 1
+""
+""  " IndentLine
+""  let g:indentLine_enabled = 1
+""  let g:indentLine_concealcursor = 0
+""  let g:indentLine_char = '┆'
+""  let g:indentLine_faster = 1
+""
   
-  if $COLORTERM == 'gnome-terminal'
-    set term=gnome-256color
-  else
-    if $TERM == 'xterm'
-      set term=xterm-256color
-    endif
-  endif
-  
+""  if $COLORTERM == 'gnome-terminal'
+""    set term=gnome-256color
+""  else
+""    if $TERM == 'xterm'
+""      set term=xterm-256color
+""    endif
+""  endif
 endif
 
 
@@ -354,7 +353,7 @@ nnoremap <silent> <leader>w :tabclose<CR>
 nnoremap <leader>. :lcd %:p:h<CR>
 
 " colorscheme
-let g:gruvbox_contrast_light = 'medium'
+let g:gruvbox_contrast_light = 'hard'
 silent! colorscheme gruvbox
 
 " Find file in current directory and edit it.
